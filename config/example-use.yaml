@@ -1,0 +1,7 @@
+apiVersion: exampleoperator.flugel.it/v1alpha1
+kind: ImmortalContainer
+metadata:
+  name: example-immortal-container
+  namespace: immortalcontainers
+spec:
+  image: nginx:latest

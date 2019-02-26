@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: immortalcontainers-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: immortalcontainers-controller
+  template:
+    metadata:
+      labels:
+        app: immortalcontainers-controller
+    spec:
+      containers:
+      - name: controller
+        image: python:3.7
+        command: ["python", "/hooks/sync.py"]
+        volumeMounts:
+        - name: hooks
+          mountPath: /hooks
+      volumes:
+      - name: hooks
+        configMap:
+          name: immortalcontainers-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immortalcontainers-controller
+spec:
+  selector:
+    app: immortalcontainers-controller
+  ports:
+  - port: 80

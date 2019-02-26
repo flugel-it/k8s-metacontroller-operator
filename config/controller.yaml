@@ -1,0 +1,18 @@
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: CompositeController
+metadata:
+  name: immortalcontainers-controller
+spec:
+  generateSelector: true
+  parentResource:
+    apiVersion: exampleoperator.flugel.it/v1alpha1
+    resource: immortalcontainers
+  childResources:
+  - apiVersion: v1
+    resource: pods
+    updateStrategy:
+      method: Recreate
+  hooks:
+    sync:
+      webhook:
+        url: http://immortalcontainers-controller.immortalcontainers/sync
