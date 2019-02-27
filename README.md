@@ -15,6 +15,15 @@ make example
 
 Then run `kubectl get pods -n immortalcontainers` and check the pod is created. If you kill the pod it will be recreated.
 
+## Testing the code
+
+First create and activate a virtualenv, then run:
+
+```bash
+make install_test_dependencies
+make test
+```
+
 ## Remove the operator
 
 Run the following command to remove operator, metacontroller.app, namespaces and CRD.

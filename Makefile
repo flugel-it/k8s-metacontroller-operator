@@ -43,3 +43,9 @@ example:
 
 example_delete:
 	kubectl delete -f config/example-use.yaml
+
+install_test_dependencies:
+	pip install -r requirements_test.txt
+
+test:
+	python3 -m pytest
