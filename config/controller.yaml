@@ -5,7 +5,7 @@ metadata:
 spec:
   generateSelector: true
   parentResource:
-    apiVersion: exampleoperator.flugel.it/v1alpha1
+    apiVersion: immortalcontainers.flugel.it/v1alpha1
     resource: immortalcontainers
   childResources:
   - apiVersion: v1
